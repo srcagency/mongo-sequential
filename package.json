@@ -1,0 +1,33 @@
+{
+	"name": "mongo-sequential",
+	"description": "Create primary keys or another sequential number with a mongodb hosted counter",
+	"version": "0.0.1",
+	"scripts": {
+		"test": "node test"
+	},
+	"keywords": [
+		"count",
+		"mongo",
+		"unique",
+		"mongodb",
+		"counter",
+		"sequence",
+		"promises",
+		"increment",
+		"sequential",
+		"auto increment",
+		"auto-increment"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/srcagency/mongo-sequential.git"
+	},
+	"dependencies": {
+		"bluebird": "2.3.11"
+	},
+	"devDependencies": {
+		"tap": "0.4.13",
+		"mongodb": "1.4.23"
+	},
+	"license": "MIT"
+}
