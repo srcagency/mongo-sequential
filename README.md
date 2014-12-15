@@ -39,6 +39,7 @@ mongodb.connect('mongodb://localhost/test', function( err, db ){
 	incrementer()
 		.then(console.log.bind(console));	// 2
 });
+```
 
 ## Test
 
