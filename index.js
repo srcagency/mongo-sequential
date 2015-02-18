@@ -13,24 +13,37 @@ var modify = {
 };
 
 var options = {
-	new: true,
 	upsert: true,
-	fields: {
-		count: 1,
-	},
+
+	// mongodb > v2.x
+	sort: sort,
+	returnOriginal: false,
+
+	// mongodb < v2.x
+	new: true,
 };
 
 function increment( collection, name, cb ) {
 	return Promise
 		.join(collection, name)
 		.spread(function( collection, name ){
-			return new Promise(function( resolve, reject ){
-				collection.findAndModify({
-					_id: name,
-				}, sort, modify, options, function( err, doc ){
-					err && reject(err) || resolve(doc.count);
-				});
-			});
+			var search = {
+				_id: name,
+			};
+
+			return Promise
+				.fromNode(function( cb ){
+					// mongodb > v2.x
+					if (collection.findOneAndUpdate)
+						collection.findOneAndUpdate(search, modify, options, cb);
+					else
+						collection.findAndModify(search, sort, modify, options, cb);
+				})
+				.then(function( r ){
+					// mongodb > v2.x has r.value
+					return r.value ? r.value : r[0];
+				})
+				.get('count');
 		})
 		.nodeify(cb);
 }

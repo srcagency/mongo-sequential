@@ -23,11 +23,11 @@
 		"url": "https://github.com/srcagency/mongo-sequential.git"
 	},
 	"dependencies": {
-		"bluebird": "2.3.11"
+		"bluebird": "2.9.9"
 	},
 	"devDependencies": {
 		"tap": "0.4.13",
-		"mongodb": "1.4.23"
+		"mongodb": "2.0.16"
 	},
 	"license": "MIT"
 }
