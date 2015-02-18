@@ -3,11 +3,10 @@
 Create primary keys or another sequential number with a mongodb hosted
 counter.
 
-Uses the `findAndModify` from `mongodb` to guarantee unique keys.
+Uses the `findOneAndUpdate` from `mongodb` to guarantee unique keys.
 
-Use *Promises* or *callbacks*. If you pass a callback it will be called
-with standard node convention of `cb(err, result)`.
-Promises are implemented using
+Use *Promises* or *callbacks*. If you pass a callback it will be called with
+standard node convention of `cb(err, result)`. Promises are implemented using
 [bluebird](https://github.com/petkaantonov/bluebird).
 
 Exports: `increment(collection, name[, cb(err, count)]) -> (Promise -> Integer)`
@@ -23,8 +22,6 @@ npm install mongo-sequential
 ```js
 var mongodb = require('mongodb');
 var increment = require('mongo-sequential');
-
-var connect = Promise.promisify(mongodb.connect);
 
 mongodb.connect('mongodb://localhost/test', function( err, db ){
 	var collection = db.collection('counters');
