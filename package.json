@@ -1,7 +1,7 @@
 {
 	"name": "mongo-sequential",
 	"description": "Create primary keys or another sequential number with a mongodb hosted counter",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
 		"test": "node test"
 	},
